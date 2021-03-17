@@ -93,3 +93,14 @@ F:\Users\MrTokin\Desktop\Case-In\Case-In\obj\Debug\Case-In.csproj.CoreCompileInp
 F:\Users\MrTokin\Desktop\Case-In\Case-In\obj\Debug\Case-In.csproj.CopyComplete
 F:\Users\MrTokin\Desktop\Case-In\Case-In\obj\Debug\Case-In.dll
 F:\Users\MrTokin\Desktop\Case-In\Case-In\obj\Debug\Case-In.pdb
+F:\Users\MrTokin\Desktop\Case-In\Case-In\bin\EntityFramework.dll
+F:\Users\MrTokin\Desktop\Case-In\Case-In\bin\EntityFramework.SqlServer.dll
+F:\Users\MrTokin\Desktop\Case-In\Case-In\bin\EntityFramework.xml
+F:\Users\MrTokin\Desktop\Case-In\Case-In\bin\EntityFramework.SqlServer.xml
+F:\Users\MrTokin\Desktop\Case-In\Case-In\obj\Debug\Case_In.Migrations.InitialCreate.resources
+F:\Users\MrTokin\Desktop\Case-In\Case-In\obj\Debug\Case-In.csproj.GenerateResource.cache
+F:\Users\MrTokin\Desktop\Case-In\Case-In\bin\System.Web.Cors.dll
+F:\Users\MrTokin\Desktop\Case-In\Case-In\bin\System.Web.Http.Cors.dll
+F:\Users\MrTokin\Desktop\Case-In\Case-In\bin\System.Web.Http.Cors.xml
+F:\Users\MrTokin\Desktop\Case-In\Case-In\obj\Debug\Case_In.Migrations.addOffice.resources
+F:\Users\MrTokin\Desktop\Case-In\Case-In\obj\Debug\Case_In.Migrations.fix.resources

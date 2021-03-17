@@ -15,7 +15,33 @@ namespace Case_In.Controllers
         {
             List<InfoCommand> lic = new List<InfoCommand>();
 
-            lic.Add(new InfoCommand() { nameCommand = "Нормативные документы", dataCommand = BasicConstants.RegulationsDocs });
+            lic.Add(new InfoCommand() 
+            { 
+                nameCommand = "Нормативные документы", 
+                dataCommand = BasicConstants.RegulationsDocs,
+                paramCommand = null
+            });
+
+            lic.Add(new InfoCommand()
+            {
+                nameCommand = "Офисы компании",
+                dataCommand = BasicConstants.CompanyOffices,
+                paramCommand = null
+            });
+
+            lic.Add(new InfoCommand()
+            {
+                nameCommand = "Информация об офисе",
+                dataCommand = BasicConstants.CompanyOfficesInfo,
+                paramCommand = "Название офиса"
+            });
+
+            lic.Add(new InfoCommand()
+            {
+                nameCommand = "План офиса",
+                dataCommand = BasicConstants.CompanyOfficesPlan,
+                paramCommand = "Название офиса"
+            });
 
             return lic;
         }

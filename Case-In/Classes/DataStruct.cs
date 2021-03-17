@@ -9,5 +9,6 @@ namespace Case_In.Classes
     {
         public string data;
         public string type;
+        public string alias;
     }
 }
