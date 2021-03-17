@@ -8,9 +8,9 @@ namespace Case_In.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Chat()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Чат";
 
             return View();
         }

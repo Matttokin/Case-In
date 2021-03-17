@@ -1,42 +1,123 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
 </head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - мое приложение ASP.NET</p>
-        </footer>
+    @RenderBody()
+
+    <div id="spisochk" class="messages_list">
+
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+
+    <div class="groups_message">
+        <input id="text_message" type="text" size="40">
+        <input id="button_message" type="submit" value="Отправить">
+    </div>
+
+    <script>
+
+        function getListCommand() {
+            var json;
+
+            $.ajax({
+                url: 'http://0d9500c85f4d.ngrok.io/api/GetCommandList',
+                type: 'GET',
+                dataType: 'html',
+                async: false,
+                success: function (msg) {
+                    json = msg;
+                }
+            });
+
+            var obj = $.parseJSON(json);
+            obj.forEach(function (entry) {
+                let input = document.createElement('input');
+                input.className = "bot_msg_button";
+                input.type = "submit";
+                input.id = entry.dataCommand;
+                input.value = entry.nameCommand;
+                if (entry.nameCommand !== null)
+                    input.name = entry.paramCommand;
+                document.getElementById("spisochk").append(input);
+            });
+        }
+
+        getListCommand();
+
+        function showMessg(msgsses, my) {
+            let div = document.createElement('textarea');
+            if(my)
+                div.className = "my_msg";
+            else
+                div.className = "bot_msg";
+            div.innerHTML = msgsses;
+            document.getElementById("spisochk").append(div);
+        }
+
+
+        document.getElementById("button_message").onclick = function () {
+            showMessg(document.getElementById("text_message").value, true);
+        } 
+
+        function sendRequest(dataCommand, paramCommand) {
+            var req = '{ "mainCommand": "' + dataCommand + '",' + '"param": "' + paramCommand + '"}';
+
+            var json;
+
+            $.ajax({
+                url: 'http://0d9500c85f4d.ngrok.io/api/Main?json=' + req,
+                type: 'post',
+                dataType: 'html',
+                async: false,
+                success: function (msg) {
+                    json = msg;
+
+                    document.getElementById("button_message").onclick = function () {
+                        showMessg(document.getElementById("text_message").value, true);
+                    } 
+                }
+            });
+
+            alert(json);
+
+        }
+
+        var text = document.getElementById("text_message");
+        var RegulationsDocs = document.getElementById("RegulationsDocs");
+        var CompanyOffices = document.getElementById("CompanyOffices");
+        var CompanyOfficesInfo = document.getElementById("CompanyOfficesInfo");
+        var CultureInfo = document.getElementById("CultureInfo");
+        var UserInfo = document.getElementById("UserInfo");
+
+        RegulationsDocs.onclick = function () { sendRequest(RegulationsDocs.id, null); };
+        CompanyOffices.onclick = function () { sendRequest(CompanyOffices.id, null); };
+        CultureInfo.onclick = function () { sendRequest(CultureInfo.id, 1); };
+
+        CompanyOfficesInfo.onclick = function () {
+            showMessg("Введите " + CompanyOfficesInfo.name, false);
+            document.getElementById("button_message").onclick = function () {
+                sendRequest(CompanyOfficesInfo.id, text.value);
+            } 
+        };
+
+        UserInfo.onclick = function () {
+            showMessg("Введите " + UserInfo.name, false);
+            document.getElementById("button_message").onclick = function () {
+                sendRequest(UserInfo.id, text.value);
+            }
+        };
+
+
+    </script>
+
+
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
