@@ -9,5 +9,6 @@ namespace Case_In.Classes
     {
         public static string text = "text";
         public static string img = "img";
+        public static string link = "link";
     }
 }
