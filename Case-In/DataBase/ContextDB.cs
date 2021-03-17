@@ -14,8 +14,13 @@ namespace Case_In.DataBase
         { }
 
         public DbSet<RegulationsDoc> RegulationsDocs { get; set; }
-        public DbSet<Office> Office { get; set; }
-        public DbSet<OfficePlan> OfficePlan { get; set; }
+        public DbSet<Office> Offices { get; set; }
+        public DbSet<OfficePlan> OfficePlans { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<EmployeeTask> EmployeeTasks { get; set; }
+        public DbSet<Culture> Cultures { get; set; }
+        public DbSet<CultureImg> CultureImgs { get; set; }
 
     }
 }

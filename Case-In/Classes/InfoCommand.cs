@@ -10,5 +10,6 @@ namespace Case_In.Classes
         public string nameCommand;
         public string dataCommand;
         public string paramCommand;
+        public bool canUseWithoutChat;
     }
 }

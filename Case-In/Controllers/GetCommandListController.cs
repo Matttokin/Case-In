@@ -19,28 +19,48 @@ namespace Case_In.Controllers
             { 
                 nameCommand = "Нормативные документы", 
                 dataCommand = BasicConstants.RegulationsDocs,
-                paramCommand = null
+                paramCommand = null,
+                canUseWithoutChat = true
             });
 
             lic.Add(new InfoCommand()
             {
                 nameCommand = "Офисы компании",
                 dataCommand = BasicConstants.CompanyOffices,
-                paramCommand = null
+                paramCommand = null,
+                canUseWithoutChat = true
             });
 
             lic.Add(new InfoCommand()
             {
                 nameCommand = "Информация об офисе",
                 dataCommand = BasicConstants.CompanyOfficesInfo,
-                paramCommand = "Название офиса"
+                paramCommand = "Название офиса",
+                canUseWithoutChat = false
             });
 
             lic.Add(new InfoCommand()
             {
                 nameCommand = "План офиса",
                 dataCommand = BasicConstants.CompanyOfficesPlan,
-                paramCommand = "Название офиса"
+                paramCommand = "Название офиса",
+                canUseWithoutChat = false
+            });
+
+            lic.Add(new InfoCommand()
+            {
+                nameCommand = "Корпоративная культура",
+                dataCommand = BasicConstants.CultureInfo,
+                paramCommand = "1",
+                canUseWithoutChat = true
+            });
+
+            lic.Add(new InfoCommand()
+            {
+                nameCommand = "Информация о сотруднике",
+                dataCommand = BasicConstants.UserInfo,
+                paramCommand = "ФИО",
+                canUseWithoutChat = false
             });
 
             return lic;

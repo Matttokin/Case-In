@@ -179,9 +179,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GetCommandListController.cs" />
     <Compile Include="DataBase\ContextDB.cs" />
+    <Compile Include="DataBase\Models\Culture.cs" />
+    <Compile Include="DataBase\Models\CultureImg.cs" />
+    <Compile Include="DataBase\Models\EmployeeTask.cs" />
     <Compile Include="DataBase\Models\Office.cs" />
     <Compile Include="DataBase\Models\OfficePlan.cs" />
+    <Compile Include="DataBase\Models\Post.cs" />
     <Compile Include="DataBase\Models\RegulationsDocs.cs" />
+    <Compile Include="DataBase\Models\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -196,6 +201,14 @@
     <Compile Include="Migrations\202103171321286_fix.cs" />
     <Compile Include="Migrations\202103171321286_fix.designer.cs">
       <DependentUpon>202103171321286_fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103171512518_addUserAndCulture.cs" />
+    <Compile Include="Migrations\202103171512518_addUserAndCulture.designer.cs">
+      <DependentUpon>202103171512518_addUserAndCulture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103171606047_fix2.cs" />
+    <Compile Include="Migrations\202103171606047_fix2.designer.cs">
+      <DependentUpon>202103171606047_fix2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -294,6 +307,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103171321286_fix.resx">
       <DependentUpon>202103171321286_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103171512518_addUserAndCulture.resx">
+      <DependentUpon>202103171512518_addUserAndCulture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103171606047_fix2.resx">
+      <DependentUpon>202103171606047_fix2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
