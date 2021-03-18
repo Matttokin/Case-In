@@ -24,16 +24,10 @@ namespace Case_In.Controllers
                         break;
 
                     default:
-                        lds.Add(new DataStruct()
-                        {
-                            data = "Бот не умеет отвечать на такие сообщения",
-                            type = BasicType.text
-                        });
-                        backJSON = new BackJSON()
+                        return new BackJSON()
                         {
                             result = false,
-                            listData = lds,
-                            listCommand = null
+                            errorMes = "Бот не умеет отвечать на такие сообщения"
                         };
                         return backJSON;
 
