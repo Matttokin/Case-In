@@ -178,6 +178,7 @@
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GetCommandListController.cs" />
+    <Compile Include="Controllers\TextController.cs" />
     <Compile Include="DataBase\ContextDB.cs" />
     <Compile Include="DataBase\Models\Culture.cs" />
     <Compile Include="DataBase\Models\CultureImg.cs" />
