@@ -11,36 +11,92 @@ html {
 }
 
 :root {
-    --color-primary: #ffd1dc;
-    --color-back: white;
-    --color-primaryAccent: #282828;
+    --мое_сообщение: #025669;
+    --мое_сообщение_цвет_текста: white;
+    --сообщение_бота: #282828;
+    --сообщение_бота_цвет_текста: white;
+    --фон: white;
+    --панель: #1560bd;
+    --фон_кнопки_отправить: white;
+    --фон_кнопки_отправить_наведение: #1faee9;
+    --текст_отправить_наведение: white;
+    --цвет_текста_кнопки_отправить: black;
+    --кнопки_бота_фон: #0087db;
+    --кнопки_бота_текст: white;
+    --кнопки_бота_при_наведении: #0067a5;
+}
+
+@media (min-width: 700px) {
+    body {
+        font-size: 2em;
+    }
+
+    input {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 700px) {
+    body {
+        font-size: 1em;
+    }
+
+    input {
+        font-size: 1em;
+    }
 }
 
 body {
     width: 100%;
     height: 100%;
-    background: var(--color-back);
+    background: var(--фон);
     padding: 0;
     margin: 0;
 }
 
+a {
+    color: var(--сообщение_бота_цвет_текста);
+}
+
+
+img {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+tr {
+    background-color: var(--фон);
+}
+
+table {
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: no-display;
+    margin-bottom: 11%;
+}
+
+
 .groups_message {
     border-width: 0;
     position: fixed;
-    background-color: var(--color-primary);
+    background-color: var(--панель);
     display: inline-block;
     bottom: 0;
     margin-left: auto;
     margin-right: auto;
-    height: 5%;
+    height: 4%;
     width: 100%;
-    padding: 1.1%;
+    padding-top: 2%;
+    padding-bottom: 3%;
     text-align: center;
 }
 
 #text_message {
     border-width: 0;
-    border-radius: 15px;
+    font-size: 1.1em;
+    border-radius: 14px;
     outline: none;
     width: 70%;
     height: 100%;
@@ -49,68 +105,101 @@ body {
 }
 
 #button_message {
+    background-color: var(--фон_кнопки_отправить);
     border-width: 0;
-    border-radius: 15px;
+    border-radius: 14px;
     outline: none;
-    width: 10%;
+    width: auto;
+    color: var(--цвет_текста_кнопки_отправить);
     height: 100%;
+    padding-left: 1%;
+    padding-right: 1%;
 }
 
     #button_message:hover {
-        background-image: linear-gradient(to top, #282828, #282828);
-        color: white;
+        background-color: var(--фон_кнопки_отправить_наведение);
+        color: var(--текст_отправить_наведение);
     }
 
 #button_message:active {
     margin: 1px 1px 0;
 }
 
-.messages_list {
+.bot_msg {
     border-width: 0;
-    top: 0;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: auto;
-    margin-bottom: 7%;
+    margin: 0.5%;
+    background-color: var(--кнопки_бота_фон);
+    border-radius: 11px;
+    outline: none;
+    padding: 1.4%;
+    border-color: var(--color-primary);
+    font-size: 1em;
+    display: inline-flex;
+    float: left;
+    max-width: 90%;
+    color: var(--сообщение_бота_цвет_текста);
+    height: 10%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+.bot_msg_button {
+    margin: auto;
+    margin: 0.5%;
+    border-width: 0;
+    background-color: var(--кнопки_бота_фон);
+    border-radius: 50px;
+    outline: none;
+    padding: 1%;
+    border-color: var(--color-primary);
+    color: var(--кнопки_бота_текст);
+    width: 77%;
+    height: 10%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    hyphens: auto;
     text-align: center;
 }
 
-.bot_msg, .bot_msg_button {
-    border-width: 0;
-    margin: 1%;
-    margin-right: 14%;
-    background-color: var(--color-primary);
-    border-radius: 11px;
-    outline: none;
-    padding: 5%;
-    border-color: var(--color-primary);
-    width: 50%;
-    font-size: 1.5em;
-}
-
     .bot_msg_button:hover {
-        background-image: linear-gradient(to top, #282828, #282828);
+        background-color: var(--кнопки_бота_при_наведении);
         color: white;
         opacity: 0.5;
     }
 
 .bot_msg_button:active {
-    background-color: var(--color-primaryAccent);
+    background-color: var(--кнопки_бота_при_наведении);
 }
 
 .my_msg {
+    margin: auto;
+    display: inline-flex;
     border-width: 0;
-    margin: 1%;
-    margin-left: 14%;
-    background-color: var(--color-primaryAccent);
+    margin: 0.5%;
+    background-color: var(--мое_сообщение);
     border-radius: 11px;
     outline: none;
     padding: 1%;
-    border-color: var(--color-primary);
-    width: 50%;
-    font-size: 1.5em;
-    color: white;
+    border-color: var(--мое_сообщение);
+    color: var(--мое_сообщение_цвет_текста);
+    float: right;
+    max-width: 90%;
+    height: 10%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    hyphens: auto;
 }
+
+
+
+
 
 
 
@@ -150,3 +239,4 @@ body {
 ::-webkit-scrollbar {
     width: 4px;
 }
+

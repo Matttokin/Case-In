@@ -11,9 +11,12 @@
 <body>
     @RenderBody()
 
-    <div id="spisochk" class="messages_list">
 
-    </div>
+    <table id="tabl_msgses">
+        <tbody id="spisochk">
+
+        </tbody>
+    </table>
 
 
     <div class="groups_message">
@@ -22,12 +25,29 @@
     </div>
 
     <script>
+        var my_masage_styl = "my_msg";
+        var bot_msg_styl = "bot_msg";
+        var bot_msg_button_styl = "bot_msg_button";
+        var bot_masg_link_styl = "bot_masg_link";
+        var bot_masg_image_styl = "bot_masg_image";
+
+        function showButtons(dataCommand, nameCommand, paramCommand) {
+            let trss = document.createElement('tr');
+            let input = document.createElement('input');
+            input.className = "bot_msg_button";
+            input.type = "submit";
+            input.id = dataCommand;
+            input.value = nameCommand;
+            if (paramCommand !== null)
+                input.name = paramCommand;
+            trss.append(input);
+            document.getElementById("spisochk").append(trss);
+        }
 
         function getListCommand() {
             var json;
-
             $.ajax({
-                url: 'http://0d9500c85f4d.ngrok.io/api/GetCommandList',
+                url: 'http://c1997e2b1dd1.ngrok.io/api/GetCommandList',
                 type: 'GET',
                 dataType: 'html',
                 async: false,
@@ -35,58 +55,97 @@
                     json = msg;
                 }
             });
-
             var obj = $.parseJSON(json);
             obj.forEach(function (entry) {
-                let input = document.createElement('input');
-                input.className = "bot_msg_button";
-                input.type = "submit";
-                input.id = entry.dataCommand;
-                input.value = entry.nameCommand;
-                if (entry.nameCommand !== null)
-                    input.name = entry.paramCommand;
-                document.getElementById("spisochk").append(input);
+                showButtons(entry.dataCommand, entry.nameCommand, entry.paramCommand);
             });
         }
 
         getListCommand();
 
-        function showMessg(msgsses, my) {
-            let div = document.createElement('textarea');
-            if(my)
-                div.className = "my_msg";
-            else
-                div.className = "bot_msg";
+        function showMessg(msgsses, class_name) {
+            let trss = document.createElement('tr');
+            let div = document.createElement('td');
+            div.className = class_name;
             div.innerHTML = msgsses;
-            document.getElementById("spisochk").append(div);
+            trss.append(div);
+            document.getElementById("spisochk").append(trss);
+
+            var curPos = $(document).scrollTop();
+            var height = $("body").height();
+            var scrollTime = (height - curPos) / 1.73;
+            $("body,html").animate({ "scrollTop": height }, scrollTime);
         }
 
-
-        document.getElementById("button_message").onclick = function () {
-            showMessg(document.getElementById("text_message").value, true);
-        } 
+        function textProcces(text) {
+            var msg;
+            switch (text.type) {
+                case 'img':
+                    msg = '<img src="' + text.data + '" />';
+                    break;
+                case 'link':
+                    msg = '<a href="' + text.data + '"><b>' + text.alias + '</b></a>';
+                    break;
+                case 'text':
+                    msg = '<b>' + text.alias + "&nbsp;" + '</b>' + text.data;
+                    break;
+                default:
+                    msg = '<b>' + text + '<b>';
+                    break;
+            }
+            return msg + '<br><br>';
+        }
 
         function sendRequest(dataCommand, paramCommand) {
             var req = '{ "mainCommand": "' + dataCommand + '",' + '"param": "' + paramCommand + '"}';
-
             var json;
-
             $.ajax({
-                url: 'http://0d9500c85f4d.ngrok.io/api/Main?json=' + req,
+                url: 'http://c1997e2b1dd1.ngrok.io/api/Main?json=' + req,
                 type: 'post',
                 dataType: 'html',
                 async: false,
                 success: function (msg) {
                     json = msg;
-
                     document.getElementById("button_message").onclick = function () {
-                        showMessg(document.getElementById("text_message").value, true);
-                    } 
+                        showMessg(document.getElementById("text_message").value, my_masage_styl);
+                    }
                 }
             });
+            var obj = $.parseJSON(json);
+            var text = "";
+            if (obj.errorMes !== null) {
+                showMessg(obj.errorMes, bot_msg_styl);
+            }
+            if (obj.listData !== null) {
+                obj.listData.forEach(function (data) {
+                    text = text + textProcces(data);
+                });
+                var texts = '<text>' + text.substr(0, text.length - 8) + '</text>';
+                showMessg(texts, bot_msg_styl);
+            }
+            if (obj.listCommand !== null) {
+                obj.listCommand.forEach(function (data) {
+                    let trss = document.createElement('tr');
+                    let input = document.createElement('input');
+                    input.className = "bot_msg_button";
+                    input.type = "submit";
+                    input.id = data.dataCommand + data.paramCommand;
+                    input.value = data.nameCommand;
+                    if (data.paramCommand !== null)
+                        input.name = data.paramCommand;
+                    trss.append(input);
+                    document.getElementById("spisochk").append(trss);
+                    document.getElementById(data.dataCommand + data.paramCommand).onclick = function () {
+                        sendRequest(data.dataCommand, data.paramCommand);
+                        document.getElementById(data.dataCommand + data.paramCommand).remove();
+                    }
+                });
+                
+            }
+        }
 
-            alert(json);
-
+        document.getElementById("button_message").onclick = function () {
+            showMessg(document.getElementById("text_message").value, my_masage_styl);
         }
 
         var text = document.getElementById("text_message");
@@ -98,23 +157,19 @@
 
         RegulationsDocs.onclick = function () { sendRequest(RegulationsDocs.id, null); };
         CompanyOffices.onclick = function () { sendRequest(CompanyOffices.id, null); };
-        CultureInfo.onclick = function () { sendRequest(CultureInfo.id, 1); };
-
+        CultureInfo.onclick = function () { sendRequest(CultureInfo.id, CultureInfo.name); };
         CompanyOfficesInfo.onclick = function () {
-            showMessg("Введите " + CompanyOfficesInfo.name, false);
+            showMessg("Введите " + CompanyOfficesInfo.name.toLowerCase(), bot_msg_styl);
             document.getElementById("button_message").onclick = function () {
                 sendRequest(CompanyOfficesInfo.id, text.value);
-            } 
+            }
         };
-
         UserInfo.onclick = function () {
-            showMessg("Введите " + UserInfo.name, false);
+            showMessg("Введите " + UserInfo.name.toLowerCase(), bot_msg_styl);
             document.getElementById("button_message").onclick = function () {
                 sendRequest(UserInfo.id, text.value);
             }
         };
-
-
     </script>
 
 
