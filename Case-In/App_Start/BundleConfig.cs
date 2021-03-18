@@ -22,6 +22,9 @@ namespace Case_In
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/chat").Include(
+                      "~/Scripts/chat.js"));
         }
     }
 }

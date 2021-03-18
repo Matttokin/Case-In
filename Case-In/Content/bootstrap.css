@@ -13,15 +13,15 @@ html {
 :root {
     --мое_сообщение: #025669;
     --мое_сообщение_цвет_текста: white;
-    --сообщение_бота: #282828;
+    --сообщение_бота: #66b3ff;
     --сообщение_бота_цвет_текста: white;
     --фон: white;
-    --панель: #1560bd;
+    --панель: #0067a5;
     --фон_кнопки_отправить: white;
     --фон_кнопки_отправить_наведение: #1faee9;
     --текст_отправить_наведение: white;
     --цвет_текста_кнопки_отправить: black;
-    --кнопки_бота_фон: #0087db;
+    --кнопки_бота_фон: #1560bd;
     --кнопки_бота_текст: white;
     --кнопки_бота_при_наведении: #0067a5;
 }
@@ -34,6 +34,7 @@ html {
     input {
         font-size: 1em;
     }
+
 }
 
 @media (max-width: 700px) {
@@ -43,6 +44,10 @@ html {
 
     input {
         font-size: 1em;
+    }
+
+    table {
+        margin-bottom: 10%;
     }
 }
 
@@ -74,11 +79,12 @@ table {
     width: 100%;
     overflow-y: auto;
     overflow-x: no-display;
-    margin-bottom: 11%;
+    margin-bottom: 20%;
 }
 
 
 .groups_message {
+    border-radius: 100px 100px 0px 0px;
     border-width: 0;
     position: fixed;
     background-color: var(--панель);
@@ -86,17 +92,17 @@ table {
     bottom: 0;
     margin-left: auto;
     margin-right: auto;
-    height: 4%;
     width: 100%;
+    height: 7%;
     padding-top: 2%;
-    padding-bottom: 3%;
+    padding-bottom: 2%;
     text-align: center;
 }
 
 #text_message {
+    border-radius: 40px;
     border-width: 0;
     font-size: 1.1em;
-    border-radius: 14px;
     outline: none;
     width: 70%;
     height: 100%;
@@ -105,13 +111,13 @@ table {
 }
 
 #button_message {
+    border-radius: 40px;
     background-color: var(--фон_кнопки_отправить);
     border-width: 0;
-    border-radius: 14px;
     outline: none;
     width: auto;
-    color: var(--цвет_текста_кнопки_отправить);
     height: 100%;
+    color: var(--цвет_текста_кнопки_отправить);
     padding-left: 1%;
     padding-right: 1%;
 }
@@ -128,8 +134,8 @@ table {
 .bot_msg {
     border-width: 0;
     margin: 0.5%;
-    background-color: var(--кнопки_бота_фон);
-    border-radius: 11px;
+    background-color: var(--сообщение_бота);
+    border-radius: 0px 50px 50px 50px;
     outline: none;
     padding: 1.4%;
     border-color: var(--color-primary);
@@ -182,7 +188,7 @@ table {
     border-width: 0;
     margin: 0.5%;
     background-color: var(--мое_сообщение);
-    border-radius: 11px;
+    border-radius: 50px 0px 50px 50px;
     outline: none;
     padding: 1%;
     border-color: var(--мое_сообщение);
