@@ -80,7 +80,7 @@ function textProcces(text) {
     var msg;
     switch (text.type) {
         case 'img':
-            msg = '<img src="' + text.data + '" />';
+            msg = '<a class="fancybox" rel="group" href="' + text.data + '"><img src="' + text.data  + '" alt="" /></a>';
             break;
         case 'link':
             msg = '<a href="' + text.data + '"><b>' + text.alias + '</b></a>';
@@ -97,6 +97,7 @@ function textProcces(text) {
 }
 
 function sendRequest(dataCommand, paramCommand) {
+    if (document.getElementById("listCommnds") !== null) document.getElementById("listCommnds").remove();
     var req = '{ "mainCommand": "' + dataCommand + '",' + '"param": "' + paramCommand + '"}';
     var json;
     $.ajax({
@@ -112,6 +113,7 @@ function sendRequest(dataCommand, paramCommand) {
             }
         }
     });
+
     var obj = $.parseJSON(json);
     var text = "";
     if (obj.errorMes !== null) {
@@ -151,6 +153,7 @@ function sendRequest(dataCommand, paramCommand) {
 }
 
 function sendReq(msg) {
+    if (document.getElementById("listCommnds") !== null) document.getElementById("listCommnds").remove();
     var req = msg;
     var json;
     $.ajax({
@@ -162,6 +165,8 @@ function sendReq(msg) {
             json = msg;
         }
     });
+
+    $.f
 
     var obj = $.parseJSON(json);
     var text = "";
