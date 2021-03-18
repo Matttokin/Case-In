@@ -23,8 +23,19 @@ namespace Case_In.Controllers
                     case "Привет": outMessage = "Приветствую Вас";
                         break;
 
-                    default: outMessage = "Бот не умеет отвечать на такие сообщения";
-                        break;
+                    default:
+                        lds.Add(new DataStruct()
+                        {
+                            data = "Бот не умеет отвечать на такие сообщения",
+                            type = BasicType.text
+                        });
+                        backJSON = new BackJSON()
+                        {
+                            result = false,
+                            listData = lds,
+                            listCommand = null
+                        };
+                        return backJSON;
 
                 }
 
