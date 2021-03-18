@@ -91,21 +91,21 @@ namespace Case_In.Controllers
                         {
                             data = OfficeInfo.NameOffice,
                             type = BasicType.text,
-                            alias = "Название"
+                            alias = "Название: "
                         });
 
                         lds.Add(new DataStruct()
                         {
                             data = OfficeInfo.AddressOffice,
                             type = BasicType.text,
-                            alias = "Адрес"
+                            alias = "Адрес: "
                         });
 
                         lds.Add(new DataStruct()
                         {
                             data = OfficeInfo.DescriptionOffice,
                             type = BasicType.text,
-                            alias = "Описание"
+                            alias = "Описание: "
                         });
 
                         lds.Add(new DataStruct()
@@ -227,35 +227,35 @@ namespace Case_In.Controllers
                         {
                             data = UserInfo.NameUser,
                             type = BasicType.text,
-                            alias = "ФИО"
+                            alias = "ФИО: "
                         });
 
                         lds.Add(new DataStruct()
                         {
                             data = UserInfo.DateBirth.ToString(),
                             type = BasicType.text,
-                            alias = "Дата рождения"
+                            alias = "Дата рождения: "
                         });
 
                         lds.Add(new DataStruct()
                         {
                             data = UserInfo.DateStartWork.ToString(),
                             type = BasicType.text,
-                            alias = "Дата начала работы"
+                            alias = "Дата начала работы: "
                         });
 
                         lds.Add(new DataStruct()
                         {
                             data = UserInfo.Salary.ToString(),
                             type = BasicType.text,
-                            alias = "Оклад"
+                            alias = "Оклад: "
                         });
 
                         lds.Add(new DataStruct()
                         {
                             data = UserInfo.Post.NamePost.ToString(),
                             type = BasicType.text,
-                            alias = "Должность"
+                            alias = "Должность:"
                         });
 
 
@@ -266,7 +266,7 @@ namespace Case_In.Controllers
                         {
                             data = EmployeeTasksCount.ToString(),
                             type = BasicType.text,
-                            alias = "Количество выполненых заданий"
+                            alias = "Количество выполненых заданий: "
                         });
 
 
