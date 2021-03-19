@@ -189,6 +189,7 @@ function sendReq(msg) {
         showButtons("listCommnds", "Вызвать список команд?", null);
         document.getElementById("listCommnds").onclick = function () {
             resetButtons();
+            scrollBottom();
             this.remove();
         }
     }
