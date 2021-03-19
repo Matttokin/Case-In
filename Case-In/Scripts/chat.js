@@ -235,27 +235,32 @@ var UserInfo = document.getElementById("UserInfo");
 RegulationsDocs.onclick = function () { sendRequest(RegulationsDocs.id, null); };
 CompanyOffices.onclick = function () { sendRequest(CompanyOffices.id, null); };
 CultureInfo.onclick = function () { sendRequest(CultureInfo.id, CultureInfo.name); };
+
+function doSendRequests(Comand) {
+    if (text.value !== "") {
+        showMessg(text.value, my_masage_styl);
+        sendRequest(Comand, text.value);
+        text.value = "";
+    }
+}
+
 CompanyOfficesPlan.onclick = function () {
     showMessg("Введите " + CompanyOfficesPlan.name.toLowerCase(), bot_msg_styl);
     document.getElementById("button_message").onclick = function () {
-        showMessg(text.value, my_masage_styl);
-        sendRequest(CompanyOfficesPlan.id, text.value);
-        text.value = "";
-    }
+        doSendRequests(CompanyOfficesPlan.id);
+    };
 };
+
 CompanyOfficesInfo.onclick = function () {
     showMessg("Введите " + CompanyOfficesInfo.name.toLowerCase(), bot_msg_styl);
     document.getElementById("button_message").onclick = function () {
-        showMessg(text.value, my_masage_styl);
-        sendRequest(CompanyOfficesInfo.id, text.value);
-        text.value = "";
-    }
+        doSendRequests(CompanyOfficesInfo.id);
+    };
 };
+
 UserInfo.onclick = function () {
     showMessg("Введите " + UserInfo.name.toLowerCase(), bot_msg_styl);
     document.getElementById("button_message").onclick = function () {
-        showMessg(text.value, my_masage_styl);
-        sendRequest(UserInfo.id, text.value);
-        text.value = "";
-    }
+        doSendRequests(UserInfo.id);
+    };
 };
