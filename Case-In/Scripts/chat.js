@@ -48,7 +48,7 @@ function resetButtons() {
     document.getElementById("spisochk").append(UserInfo);
 }
 
-function showButtons(dataCommand, nameCommand, paramCommand) {
+function showButtons(dataCommand, nameCommand, paramCommand, scroll = true) {
     let trss = document.createElement('tr');
     let input = document.createElement('input');
     input.className = "bot_msg_button";
@@ -60,7 +60,8 @@ function showButtons(dataCommand, nameCommand, paramCommand) {
     trss.append(input);
     document.getElementById("spisochk").append(trss);
 
-    scrollBottom();
+    if(scroll)
+        scrollBottom();
 }
 
 
@@ -77,7 +78,7 @@ function getListCommand() {
     });
     var obj = $.parseJSON(json);
     obj.forEach(function (entry) {
-        showButtons(entry.dataCommand, entry.nameCommand, entry.paramCommand);
+        showButtons(entry.dataCommand, entry.nameCommand, entry.paramCommand, false);
     });
 }
 
