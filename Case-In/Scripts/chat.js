@@ -239,6 +239,7 @@ CompanyOfficesPlan.onclick = function () {
     document.getElementById("button_message").onclick = function () {
         showMessg(text.value, my_masage_styl);
         sendRequest(CompanyOfficesPlan.id, text.value);
+        text.value = "";
     }
 };
 CompanyOfficesInfo.onclick = function () {
@@ -246,6 +247,7 @@ CompanyOfficesInfo.onclick = function () {
     document.getElementById("button_message").onclick = function () {
         showMessg(text.value, my_masage_styl);
         sendRequest(CompanyOfficesInfo.id, text.value);
+        text.value = "";
     }
 };
 UserInfo.onclick = function () {
@@ -253,5 +255,6 @@ UserInfo.onclick = function () {
     document.getElementById("button_message").onclick = function () {
         showMessg(text.value, my_masage_styl);
         sendRequest(UserInfo.id, text.value);
+        text.value = "";
     }
 };
