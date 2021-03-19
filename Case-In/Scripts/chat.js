@@ -7,18 +7,21 @@ var bot_masg_image_styl = "bot_masg_image";
 var document = window.document;
 var text = document.getElementById("text_message");
 
+
 function scrollBottom() {
     var curPos = $(document).scrollTop();
-    var height = $("#tabl_msgses").height();
+    var height = $("body").height();
     var scrollTime = (height - curPos) / 1.73;
-    $("#tabl_msgses").animate({ "scrollTop": height }, scrollTime);
+    $("body,html").animate({ "scrollTop": height }, scrollTime);
 }
 
 function bseClickProccesSend() {
     document.getElementById("button_message").onclick = function () {
-        showMessg(text.value, my_masage_styl);
-        sendReq(text.value);
-        text.value = "";
+        if (text.value !== "") {
+            showMessg(text.value, my_masage_styl);
+            sendReq(text.value);
+            text.value = "";
+        }
     }
 }
 
@@ -131,6 +134,7 @@ function sendRequest(dataCommand, paramCommand) {
         showButtons("listCommnds", "Вызвать список команд?", null);
         document.getElementById("listCommnds").onclick = function () {
             resetButtons();
+            scrollBottom();
             this.remove();
         }
     }

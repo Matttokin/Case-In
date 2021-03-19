@@ -11,19 +11,10 @@ html {
 }
 
 :root {
-    --мое_сообщение: #025669;
     --мое_сообщение_цвет_текста: white;
-    --сообщение_бота: #66b3ff;
     --сообщение_бота_цвет_текста: white;
-    --фон: white;
-    --панель: #0067a5;
-    --фон_кнопки_отправить: white;
-    --фон_кнопки_отправить_наведение: #1faee9;
-    --текст_отправить_наведение: white;
-    --цвет_текста_кнопки_отправить: black;
-    --кнопки_бота_фон: #1560bd;
     --кнопки_бота_текст: white;
-    --кнопки_бота_при_наведении: #0067a5;
+    --фон: white;
 }
 
 @media (max-width: 350px) {
@@ -92,8 +83,8 @@ html {
     }
 
     .bot_msg {
-        border-radius: 0px 50px 50px 50px;
-        padding: 1%;
+        border-radius: 0px 30px 30px 30px;
+        padding: 1.1%;
     }
 
     .bot_msg_button {
@@ -103,8 +94,8 @@ html {
 
 
     .my_msg {
-        border-radius: 50px 50px 0px 50px;
-        padding: 1%;
+        border-radius: 30px 30px 0px 30px;
+        padding: 1.1%;
     }
 
     #text_message {
@@ -176,6 +167,12 @@ html {
         height: 105%;
     }
 }
+@media (min-width: 240px) {
+    #text_message {
+        width: 67%;
+        height: 100%;
+    }
+}
 
 
 body {
@@ -211,18 +208,18 @@ tr {
     padding: 1%;
     -webkit-box-shadow: 4px 4px 10px -3px rgba(34, 60, 80, 0.38);
     -moz-box-shadow: 4px 4px 10px -3px rgba(34, 60, 80, 0.38);
-    box-shadow: 100px 4px 10px -3px rgba(34, 60, 80, 0.38);
+    box-shadow: 4px 4px 10px -3px rgba(34, 60, 80, 0.38);
     z-index: 4;
     top: 0;
 }
 
-
 table {
+    top[]
+    position: fixed;
     width: 100%;
     overflow-y: scroll;
     overflow-x: no-display;
 }
-
 
 .groups_message {
     border-width: 0;
@@ -239,7 +236,7 @@ table {
     text-align: center;
     -webkit-box-shadow: 4px 4px 10px -3px rgba(34, 60, 80, 0.38);
     -moz-box-shadow: 4px 4px 10px -3px rgba(34, 60, 80, 0.38);
-    box-shadow: 4px 4px 10px -3px rgba(34, 60, 80, 0.38);
+    box-shadow: 4px -4px 10px -3px rgba(34, 60, 80, 0.38);
     z-index: 2;
 }
 
@@ -308,7 +305,7 @@ table {
     outline: none;
     border-color: var(--color-primary);
     color: var(--кнопки_бота_текст);
-    width: 77%;
+    width: 100%;
     height: 10%;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -352,11 +349,6 @@ table {
     -moz-box-shadow: 4px 4px 10px -3px rgba(34, 60, 80, 0.38);
     box-shadow: 4px 4px 10px -3px rgba(34, 60, 80, 0.38);
 }
-}
-
-
-
-
 
 
 
@@ -373,17 +365,17 @@ table {
 }
 
 ::-webkit-scrollbar-track {
-    background-color: var(--color-primary);
+    background-color: rgb(155, 146, 229);
 }
 
 ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 0px;
     border-radius: 0px;
-    background-color: var(--color-primaryAccent);
+    background-color: rgb(57, 78, 189);
 }
 
     ::-webkit-scrollbar-thumb:hover {
-        background-color: var(--color-primaryAccent);
+        background-color: rgb(191, 207, 255);
     }
 
 ::-webkit-resizer {
