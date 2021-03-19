@@ -7,6 +7,20 @@ var bot_masg_image_styl = "bot_masg_image";
 var document = window.document;
 var text = document.getElementById("text_message");
 
+function scrollBottom() {
+    var curPos = $(document).scrollTop();
+    var height = $("#tabl_msgses").height();
+    var scrollTime = (height - curPos) / 1.73;
+    $("#tabl_msgses").animate({ "scrollTop": height }, scrollTime);
+}
+
+function bseClickProccesSend() {
+    document.getElementById("button_message").onclick = function () {
+        showMessg(text.value, my_masage_styl);
+        sendReq(text.value);
+        text.value = "";
+    }
+}
 
 function resetButtons() {
     var RegulationsDocs = document.getElementById("RegulationsDocs");
@@ -42,6 +56,8 @@ function showButtons(dataCommand, nameCommand, paramCommand) {
         input.name = paramCommand;
     trss.append(input);
     document.getElementById("spisochk").append(trss);
+
+    scrollBottom();
 }
 
 
@@ -70,20 +86,17 @@ function showMessg(msgsses, class_name) {
     trss.append(div);
     document.getElementById("spisochk").append(trss);
 
-    var curPos = $(document).scrollTop();
-    var height = $("body").height();
-    var scrollTime = (height - curPos) / 1.73;
-    $("body,html").animate({ "scrollTop": height }, scrollTime);
+    scrollBottom();
 }
 
 function textProcces(text) {
     var msg;
     switch (text.type) {
         case 'img':
-            msg = '<a class="fancybox" rel="group" href="' + text.data + '"><img src="' + text.data  + '" alt="" /></a>';
+            msg = '<img src="' + text.data  + '" alt="" />';
             break;
         case 'link':
-            msg = '<a href="' + text.data + '"><b>' + text.alias + '</b></a>';
+            msg = '<a href="' + text.data + '" target="_blank"><b>' + text.alias + '</b></a>';
             break;
         case 'text':
             var alias = text.alias !== null ? text.alias : " ";
@@ -107,10 +120,7 @@ function sendRequest(dataCommand, paramCommand) {
         async: false,
         success: function (msg) {
             json = msg;
-            document.getElementById("button_message").onclick = function () {
-                showMessg(text.value, my_masage_styl);
-                sendReq(text.value);
-            }
+            bseClickProccesSend();
         }
     });
 
@@ -205,10 +215,7 @@ function sendReq(msg) {
     }
 }
 
-document.getElementById("button_message").onclick = function () {
-    showMessg(text.value, my_masage_styl);
-    sendReq(text.value);
-}
+bseClickProccesSend();
 
 getListCommand();
 
