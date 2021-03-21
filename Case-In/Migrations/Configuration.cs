@@ -82,10 +82,10 @@
 
             context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 1, OfficeId = 1, imgLink = "https://studme.org/htm/img/15/2901/112.png" });
             context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 2, OfficeId = 1, imgLink = "https://photogrammetria.ru/uploads/posts/2013-01/1358890267_oforml_plan_02.jpg" });
-            context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 3, OfficeId = 2, imgLink = "https://www.exprof-rf.ru/images/uploads/802-kadastrovie-raboti-v-barnaule-e1475253647512.jpg" });
-            context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 4, OfficeId = 3, imgLink = "https://ce-na.ru/upload/iblock/afb/afb01ea6b753ae90a6ccf14126d36bc6.jpg" });
-            context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 3, OfficeId = 4, imgLink = "https://www.exprof-rf.ru/images/uploads/802-kadastrovie-raboti-v-barnaule-e1475253647512.jpg" });
-            context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 4, OfficeId = 5, imgLink = "https://ce-na.ru/upload/iblock/afb/afb01ea6b753ae90a6ccf14126d36bc6.jpg" });
+            context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 3, OfficeId = 2, imgLink = "https://studme.org/htm/img/15/2901/112.png" });
+            context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 4, OfficeId = 3, imgLink = "https://studme.org/htm/img/15/2901/112.png" });
+            context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 3, OfficeId = 4, imgLink = "https://studme.org/htm/img/15/2901/112.png" });
+            context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 4, OfficeId = 5, imgLink = "https://studme.org/htm/img/15/2901/112.png" });
 
             context.Cultures.AddOrUpdate(new DataBase.Models.Culture() { Id = 1, DataRow = "Госкорпорация «Росатом» (Государственная корпорация по " +
                 "атомной энергии «Росатом») является одним из крупнейших" +
