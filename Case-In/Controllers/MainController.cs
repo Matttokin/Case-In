@@ -301,10 +301,16 @@ namespace Case_In.Controllers
                             };
                         } else
                         {
+                            lds.Add(new DataStruct()
+                            {
+                                data = "Пользователь авторизован",
+                                type = BasicType.text
+                            });
                             return new BackJSON()
                             {
                                 result = true,
-                                errorMes = "Пользователь авторизован"
+                                listData = lds
+
                             };
                         }
 
