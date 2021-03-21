@@ -9,5 +9,7 @@ namespace Case_In.Classes
     {
         public string mainCommand;
         public string param;
+        public string login;
+        public string password;
     }
 }

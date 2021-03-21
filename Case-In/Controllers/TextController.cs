@@ -29,7 +29,6 @@ namespace Case_In.Controllers
                             result = false,
                             errorMes = "Бот не умеет отвечать на такие сообщения"
                         };
-                        return backJSON;
 
                 }
 

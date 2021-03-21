@@ -215,8 +215,8 @@ namespace Case_In.Controllers
                         return backJSON;
 
                     case BasicConstants.UserInfo:
-
-                        var UserInfo = context.Users.Include(u => u.Post).FirstOrDefault(x => x.NameUser.Equals(fj.param.Trim()));
+                        
+                        var UserInfo = context.Users.Include(u => u.Post).FirstOrDefault(x => x.Login.Equals(fj.login) && x.Password.Equals(fj.password));
                         if (UserInfo == null) return new BackJSON()
                         {
                             result = false,
@@ -281,6 +281,25 @@ namespace Case_In.Controllers
                             listCommand = null
                         };
                         return backJSON;
+
+                    case BasicConstants.Authorization:
+
+                        var UserInfoAuth = context.Users.FirstOrDefault(x => x.Login.Equals(fj.login) && x.Password.Equals(fj.password));
+                        if (UserInfoAuth == null)
+                        {
+                            return new BackJSON()
+                            {
+                                result = false,
+                                errorMes = "Неверный логин или пароль"
+                            };
+                        } else
+                        {
+                            return new BackJSON()
+                            {
+                                result = true,
+                                errorMes = "Пользователь авторизован"
+                            };
+                        }
 
                     default: return new BackJSON()
                     {

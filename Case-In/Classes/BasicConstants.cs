@@ -14,5 +14,6 @@ namespace Case_In.Classes
         public const string CultureInfo = "CultureInfo";
         public const string UserInfo = "UserInfo";
         public const string SecurityPolicy = "SecurityPolicy";
+        public const string Authorization = "Authorization";
     }
 }

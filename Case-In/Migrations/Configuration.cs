@@ -125,14 +125,17 @@
             context.CultureImgs.AddOrUpdate(new DataBase.Models.CultureImg() { Id = 4, CultureId = 3, ImgLink = "https://ce-na.ru/upload/iblock/afb/afb01ea6b753ae90a6ccf14126d36bc6.jpg" });
             context.CultureImgs.AddOrUpdate(new DataBase.Models.CultureImg() { Id = 5, CultureId = 4, ImgLink = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/RIAN_archive_132603_Nuclear_power_reactor_fuel_assembly.jpg/220px-RIAN_archive_132603_Nuclear_power_reactor_fuel_assembly.jpg" });
 
-            context.Posts.AddOrUpdate(new DataBase.Models.Post() { Id = 1, NamePost = "Директор директоров" });
+            context.Posts.AddOrUpdate(new DataBase.Models.Post() { Id = 1, NamePost = "Директор" });
             context.Posts.AddOrUpdate(new DataBase.Models.Post() { Id = 2, NamePost = "Старший менеджер" });
             context.Posts.AddOrUpdate(new DataBase.Models.Post() { Id = 3, NamePost = "Администратор" });
 
 
-            context.Users.AddOrUpdate(new DataBase.Models.User() { Id = 1, NameUser = "Токин И.О.", DateBirth = DateTime.Parse("28.02.2000"), DateStartWork = DateTime.Parse("15.02.2020"),Salary = 100000, PostId = 1});
-            context.Users.AddOrUpdate(new DataBase.Models.User() { Id = 2, NameUser = "Иванов И.И.", DateBirth = DateTime.Parse("28.02.2010"), DateStartWork = DateTime.Parse("15.02.2010"), Salary = 90000, PostId = 2});
-            context.Users.AddOrUpdate(new DataBase.Models.User() { Id = 3, NameUser = "Жжонов В.А.", DateBirth = DateTime.Parse("28.02.2003"), DateStartWork = DateTime.Parse("15.02.2028"), Salary = 13000, PostId = 3});
+            context.Users.AddOrUpdate(new DataBase.Models.User() { Id = 1, NameUser = "Токин И.О.", Login = "MrTokin", Password = "1234567",
+                DateBirth = DateTime.Parse("28.02.2000"), DateStartWork = DateTime.Parse("15.02.2020"),Salary = 100000, PostId = 1});
+            context.Users.AddOrUpdate(new DataBase.Models.User() { Id = 2, NameUser = "Иванов И.И.", Login = "IvanIvanov", Password = "1234567q"
+                , DateBirth = DateTime.Parse("28.02.2010"), DateStartWork = DateTime.Parse("15.02.2010"), Salary = 90000, PostId = 2});
+            context.Users.AddOrUpdate(new DataBase.Models.User() { Id = 3, NameUser = "Жжонов В.А.", Login = "JonKoreya", Password = "1234567qw"
+                , DateBirth = DateTime.Parse("28.02.2003"), DateStartWork = DateTime.Parse("15.02.2028"), Salary = 13000, PostId = 3});
 
             context.EmployeeTasks.AddOrUpdate(new DataBase.Models.EmployeeTask() { Id = 1, UserId = 1, NameTask = "Задача 1", DateStart = DateTime.Parse("28.02.2003"), DateFinish = DateTime.Parse("28.02.2003") });
             context.EmployeeTasks.AddOrUpdate(new DataBase.Models.EmployeeTask() { Id = 2, UserId = 1, NameTask = "Задача 2", DateStart = DateTime.Parse("28.02.2003"), DateFinish = DateTime.Parse("28.02.2003") });

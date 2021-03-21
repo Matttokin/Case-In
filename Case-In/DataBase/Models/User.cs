@@ -9,6 +9,8 @@ namespace Case_In.DataBase.Models
     public class User
     {
         public int Id { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
 
         [DisplayName("ФИО")]
         public string NameUser { get; set; }

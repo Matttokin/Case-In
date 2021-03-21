@@ -106,3 +106,4 @@ F:\Users\MrTokin\Desktop\Case-In\Case-In\obj\Debug\Case_In.Migrations.addOffice.
 F:\Users\MrTokin\Desktop\Case-In\Case-In\obj\Debug\Case_In.Migrations.fix.resources
 F:\Users\MrTokin\Desktop\Case-In\Case-In\obj\Debug\Case_In.Migrations.addUserAndCulture.resources
 F:\Users\MrTokin\Desktop\Case-In\Case-In\obj\Debug\Case_In.Migrations.fix2.resources
+F:\Users\MrTokin\Desktop\Case-In\Case-In\obj\Debug\Case_In.Migrations.addAuth.resources
