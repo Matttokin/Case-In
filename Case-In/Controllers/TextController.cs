@@ -18,19 +18,32 @@ namespace Case_In.Controllers
                 BackJSON backJSON;
                 List<DataStruct> lds = new List<DataStruct>();
                 string outMessage = "";
-                switch (text)
+                string[] helloArr = new string[]
                 {
-                    case "Привет": outMessage = "Приветствую Вас";
-                        break;
+                    "привет", "здравствуй", "здравствуйте", "hello","hi"
+                };
+                string[] helpArr = new string[]
+                {
+                    "помощь", "инструкция", "manual", "руководство"
+                };
 
-                    default:
-                        return new BackJSON()
-                        {
-                            result = false,
-                            errorMes = "Бот не умеет отвечать на такие сообщения"
-                        };
-
+                if (helloArr.Contains(text.ToLower()))
+                {
+                    outMessage = "Приветствую Вас";
                 }
+                else if (helpArr.Contains(text.ToLower()))
+                {
+                    outMessage = "Чтобы получить интересующую информацию, нажмите на соответствующую кнопку и следуйте инструкциям";
+                }
+                else
+                {
+                    return new BackJSON()
+                    {
+                        result = false,
+                        errorMes = "Бот не умеет отвечать на такие сообщения"
+                    };
+                }
+
 
                 lds.Add(new DataStruct()
                 {
