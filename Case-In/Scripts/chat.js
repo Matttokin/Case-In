@@ -67,9 +67,8 @@ function showButtons(dataCommand, nameCommand, paramCommand, canusetwithoutchat 
             showMessg('Введите логин и пароль в следующем формате: "log pass"', bot_msg_styl);
             document.getElementById("button_message").onclick = function () {
                 login_password = text.value;
-                sendRequest(dataCommand, text.value);
+                sendRequest(dataCommand, login_password);
                 text.value = "";
-                resetButtons();
             };
         }
     }
@@ -144,11 +143,12 @@ function textProcces(text) {
     return msg + '<br><br>';
 }
 
-function proccessDataFromServer(json) {
+function proccessDataFromServer(json, dataCommand = "huawehoau") {
     if (document.getElementById("listCommnds") !== null) document.getElementById("listCommnds").remove();
     var obj = $.parseJSON(json);
     var text = "";
     if (obj.errorMes !== null) {
+        if (dataCommand == "Authorization") login_password = "";
         showMessg(obj.errorMes, bot_msg_styl);
         showButtons("listCommnds", "Вызвать список команд?", null);
         document.getElementById("listCommnds").onclick = function () {
@@ -174,16 +174,18 @@ function proccessDataFromServer(json) {
 
 function sendRequest(dataCommand, paramCommand) {
     var req = '{ "mainCommand": "' + dataCommand + '",' + '"param": "' + paramCommand + '"}';
+    var res = false;
     $.ajax({
         url: 'http://c1997e2b1dd1.ngrok.io/api/Main?json=' + req,
         type: 'post',
         dataType: 'html',
         async: false,
         success: function (msg) {
-            proccessDataFromServer(msg);
             bseClickProccesSend();
+            proccessDataFromServer(msg, dataCommand);
         }
     });
+    return res;
 }
 
 function sendReq(msg) {
