@@ -214,8 +214,6 @@ tr {
 }
 
 table {
-    top[]
-    position: fixed;
     width: 100%;
     overflow-y: scroll;
     overflow-x: no-display;

@@ -7,6 +7,8 @@ var bot_masg_image_styl = "bot_masg_image";
 var document = window.document;
 var text = document.getElementById("text_message");
 
+var login_password = "";
+
 function doSendRequests(Comand) {
     if (text.value !== "") {
         showMessg(text.value, my_masage_styl);
@@ -33,37 +35,45 @@ function bseClickProccesSend() {
 }
 
 function resetButtons() {
-    var RegulationsDocs = document.getElementById("RegulationsDocs");
-    var CompanyOffices = document.getElementById("CompanyOffices");
-    var CompanyOfficesPlan = document.getElementById("CompanyOfficesPlan");
-    var CompanyOfficesInfo = document.getElementById("CompanyOfficesInfo");
-    var CultureInfo = document.getElementById("CultureInfo");
-    var UserInfo = document.getElementById("UserInfo");
-
-    document.getElementById("RegulationsDocs").remove();
-    document.getElementById("CompanyOffices").remove();
-    document.getElementById("CompanyOfficesPlan").remove();
-    document.getElementById("CompanyOfficesInfo").remove();
-    document.getElementById("CultureInfo").remove();
-    document.getElementById("UserInfo").remove();
-
-    document.getElementById("spisochk").append(RegulationsDocs);
-    document.getElementById("spisochk").append(CompanyOffices);
-    document.getElementById("spisochk").append(CompanyOfficesPlan);
-    document.getElementById("spisochk").append(CompanyOfficesInfo);
-    document.getElementById("spisochk").append(CultureInfo);
-    document.getElementById("spisochk").append(UserInfo);
+    var listMenuButtons = document.getElementsByClassName("menuclass");
+    var count = [];
+    for (var i = 0; i < listMenuButtons.length; i++) {
+        count.push(listMenuButtons[i].id);
+    }
+    for (var i = 0; i < count.length; i++) {
+        document.getElementById(count[i]).remove();
+    }
+    getListCommand();
 }
 
-function showButtons(dataCommand, nameCommand, paramCommand, canusetwithoutchat = true, needreemove = false, scroll = true) {
+function showButtons(dataCommand, nameCommand, paramCommand, canusetwithoutchat = true, needreemove = false, scroll = true, menu = false) {
     let trss = document.createElement('tr');
     let input = document.createElement('input');
     input.className = "bot_msg_button";
+    if (menu) input.className += " menuclass" 
     input.type = "submit";
     input.id = dataCommand;
     input.value = nameCommand;
     if (paramCommand !== null)
         input.name = paramCommand;
+    if (dataCommand == "UserInfo") {
+        input.onclick = function () {
+            sendRequest(dataCommand, login_password);
+        }
+    }
+    else
+    if (dataCommand == "Authorization") {
+        input.onclick = function () {
+            showMessg('Введите логин и пароль в следующем формате: "log pass"', bot_msg_styl);
+            document.getElementById("button_message").onclick = function () {
+                login_password = text.value;
+                sendRequest(dataCommand, text.value);
+                text.value = "";
+                resetButtons();
+            };
+        }
+    }
+    else
     if (!canusetwithoutchat) {
         input.onclick = function () {
             showMessg("Введите " + paramCommand.toLowerCase(), bot_msg_styl);
@@ -89,7 +99,7 @@ function showButtons(dataCommand, nameCommand, paramCommand, canusetwithoutchat 
 function getListCommand() {
     var json;
     $.ajax({
-        url: 'http://c1997e2b1dd1.ngrok.io/api/GetCommandList',
+        url: 'http://c1997e2b1dd1.ngrok.io/api/GetCommandList?isAuth=' + (login_password !== ""),
         type: 'GET',
         dataType: 'html',
         async: false,
@@ -99,7 +109,7 @@ function getListCommand() {
     });
     var obj = $.parseJSON(json);
     obj.forEach(function (entry) {
-        showButtons(entry.dataCommand, entry.nameCommand, entry.paramCommand, entry.canUseWithoutChat, false, false);
+        showButtons(entry.dataCommand, entry.nameCommand, entry.paramCommand, entry.canUseWithoutChat, false, false, true);
     });
 }
 
@@ -192,4 +202,3 @@ function sendReq(msg) {
 bseClickProccesSend();
 
 getListCommand();
-
