@@ -236,14 +236,14 @@ namespace Case_In.Controllers
 
                         lds.Add(new DataStruct()
                         {
-                            data = UserInfo.DateBirth.ToString(),
+                            data = UserInfo.DateBirth.ToString("D"),
                             type = BasicType.text,
                             alias = "Дата рождения: "
                         });
 
                         lds.Add(new DataStruct()
                         {
-                            data = UserInfo.DateStartWork.ToString(),
+                            data = UserInfo.DateStartWork.ToString("D"),
                             type = BasicType.text,
                             alias = "Дата начала работы: "
                         });
