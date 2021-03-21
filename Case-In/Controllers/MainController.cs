@@ -16,10 +16,12 @@ namespace Case_In.Controllers
     {
         public BackJSON Post(string json)
         {
-            try {
+            try
+            {
                 FrontJSON fj = JsonConvert.DeserializeObject<FrontJSON>(json);
                 ContextDB context = new ContextDB();
                 BackJSON backJSON;
+                string[] authArr;
                 List<DataStruct> lds = new List<DataStruct>();
                 List<InfoCommand> lic = new List<InfoCommand>();
                 switch (fj.mainCommand)
@@ -215,8 +217,10 @@ namespace Case_In.Controllers
                         return backJSON;
 
                     case BasicConstants.UserInfo:
-                        
-                        var UserInfo = context.Users.Include(u => u.Post).FirstOrDefault(x => x.Login.Equals(fj.login) && x.Password.Equals(fj.password));
+                        authArr = fj.param.Split(' ');
+                        var loginUserInfo = authArr[0];
+                        var passwordUserInfo = authArr[1];
+                        var UserInfo = context.Users.Include(u => u.Post).FirstOrDefault(x => x.Login.Equals(loginUserInfo) && x.Password.Equals(passwordUserInfo));
                         if (UserInfo == null) return new BackJSON()
                         {
                             result = false,
@@ -283,8 +287,11 @@ namespace Case_In.Controllers
                         return backJSON;
 
                     case BasicConstants.Authorization:
+                        authArr = fj.param.Split(' ');
+                        var loginAuthorization = authArr[0];
+                        var passwordAuthorization = authArr[1];
 
-                        var UserInfoAuth = context.Users.FirstOrDefault(x => x.Login.Equals(fj.login) && x.Password.Equals(fj.password));
+                        var UserInfoAuth = context.Users.FirstOrDefault(x => x.Login.Equals(loginAuthorization) && x.Password.Equals(passwordAuthorization));
                         if (UserInfoAuth == null)
                         {
                             return new BackJSON()
@@ -308,15 +315,15 @@ namespace Case_In.Controllers
                     };
 
                 }
-            } catch
+        } catch
             {
                 return new BackJSON()
-                {
-                    result = false,
+        {
+            result = false,
                     errorMes = "Ошибка сервера"
                 };
-            }
-        } 
+    }
+} 
 
     } 
 }
