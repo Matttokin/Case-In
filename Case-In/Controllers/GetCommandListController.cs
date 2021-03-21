@@ -59,10 +59,10 @@ namespace Case_In.Controllers
             {
                 lic.Add(new InfoCommand()
                 {
-                    nameCommand = "Информация о сотруднике",
+                    nameCommand = "О себе",
                     dataCommand = BasicConstants.UserInfo,
                     paramCommand = "JSON",
-                    canUseWithoutChat = false
+                    canUseWithoutChat = true
                 });
             } else
             {
