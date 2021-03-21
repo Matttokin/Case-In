@@ -84,8 +84,8 @@
             context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 2, OfficeId = 1, imgLink = "https://photogrammetria.ru/uploads/posts/2013-01/1358890267_oforml_plan_02.jpg" });
             context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 3, OfficeId = 2, imgLink = "https://studme.org/htm/img/15/2901/112.png" });
             context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 4, OfficeId = 3, imgLink = "https://studme.org/htm/img/15/2901/112.png" });
-            context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 3, OfficeId = 4, imgLink = "https://studme.org/htm/img/15/2901/112.png" });
-            context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 4, OfficeId = 5, imgLink = "https://studme.org/htm/img/15/2901/112.png" });
+            context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 5, OfficeId = 4, imgLink = "https://studme.org/htm/img/15/2901/112.png" });
+            context.OfficePlans.AddOrUpdate(new DataBase.Models.OfficePlan() { Id = 6, OfficeId = 5, imgLink = "https://studme.org/htm/img/15/2901/112.png" });
 
             context.Cultures.AddOrUpdate(new DataBase.Models.Culture() { Id = 1, DataRow = "Госкорпорация «Росатом» (Государственная корпорация по " +
                 "атомной энергии «Росатом») является одним из крупнейших" +
