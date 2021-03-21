@@ -163,6 +163,7 @@ function proccessDataFromServer(json, dataCommand = "huawehoau") {
         });
         var texts = '<text>' + text.substr(0, text.length - 8) + '</text>';
         showMessg(texts, bot_msg_styl);
+        if (dataCommand == "Authorization") resetButtons();
     }
     if (obj.listCommand !== null) {
         obj.listCommand.forEach(function (data) {
