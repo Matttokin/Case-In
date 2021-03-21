@@ -211,6 +211,10 @@
     <Compile Include="Migrations\202103171606047_fix2.designer.cs">
       <DependentUpon>202103171606047_fix2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103210750584_addAuth.cs" />
+    <Compile Include="Migrations\202103210750584_addAuth.designer.cs">
+      <DependentUpon>202103210750584_addAuth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -316,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103171606047_fix2.resx">
       <DependentUpon>202103171606047_fix2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103210750584_addAuth.resx">
+      <DependentUpon>202103210750584_addAuth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

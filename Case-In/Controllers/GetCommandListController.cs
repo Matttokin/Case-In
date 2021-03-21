@@ -11,8 +11,9 @@ namespace Case_In.Controllers
     public class GetCommandListController : ApiController
     {
         // GET api/values
-        public List<InfoCommand> Get()
+        public List<InfoCommand> Get(bool isAuth)
         {
+            
             List<InfoCommand> lic = new List<InfoCommand>();
 
             lic.Add(new InfoCommand() 
@@ -54,14 +55,25 @@ namespace Case_In.Controllers
                 paramCommand = "1",
                 canUseWithoutChat = true
             });
-
-            lic.Add(new InfoCommand()
+            if (isAuth)
             {
-                nameCommand = "Информация о сотруднике",
-                dataCommand = BasicConstants.UserInfo,
-                paramCommand = "ФИО",
-                canUseWithoutChat = false
-            });
+                lic.Add(new InfoCommand()
+                {
+                    nameCommand = "О себе",
+                    dataCommand = BasicConstants.UserInfo,
+                    paramCommand = "JSON",
+                    canUseWithoutChat = true
+                });
+            } else
+            {
+                lic.Add(new InfoCommand()
+                {
+                    nameCommand = "Авторизоваться",
+                    dataCommand = BasicConstants.Authorization,
+                    paramCommand = "JSON",
+                    canUseWithoutChat = false
+                });
+            }
 
             return lic;
         }
